@@ -19,32 +19,34 @@
         align-items: center;
         cursor: pointer;
       }
+
+      .hidden {
+        visibility: hidden;
+      }
     </style>
   </head>
   <body>
     <div class="container">
-      <h1>Find the hidden message</h1>
+      <h1>Uncover the birthday wish</h1>
       <div id="boxes">
       </div>
-      <p id="message"></p>
+      <p id="message" class="hidden"></p>
     </div>
     <script>
-      const messages = [
-        "happy",
-        "birthday",
-        "to",
-        "you",
-      ];
+      const message = "Happy Birthday!";
 
       const boxes = document.querySelector("#boxes");
-      const message = document.querySelector("#message");
+      const messageEl = document.querySelector("#message");
 
-      for (let i = 0; i < messages.length; i++) {
+      for (let i = 0; i < message.length; i++) {
         const box = document.createElement("div");
         box.classList.add("box");
-        box.innerText = messages[i][0];
+        box.innerText = "?";
         box.addEventListener("click", function () {
-          message.innerText += " " + messages[i];
+          this.innerText = message[i];
+          if (messageEl.classList.contains("hidden")) {
+            messageEl.classList.remove("hidden");
+          }
         });
         boxes.appendChild(box);
       }
