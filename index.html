@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .box {
+        width: 50px;
+        height: 50px;
+        background-color: blue;
+        color: white;
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Find the hidden message</h1>
+      <div id="boxes">
+      </div>
+      <p id="message"></p>
+    </div>
+    <script>
+      const messages = [
+        "happy",
+        "birthday",
+        "to",
+        "you",
+      ];
+
+      const boxes = document.querySelector("#boxes");
+      const message = document.querySelector("#message");
+
+      for (let i = 0; i < messages.length; i++) {
+        const box = document.createElement("div");
+        box.classList.add("box");
+        box.innerText = messages[i][0];
+        box.addEventListener("click", function () {
+          message.innerText += " " + messages[i];
+        });
+        boxes.appendChild(box);
+      }
+    </script>
+  </body>
+</html>
